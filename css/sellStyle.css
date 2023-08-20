@@ -1,0 +1,41 @@
+.dz-clickable {
+    width: 152%;
+    height: 300 vh;
+}
+
+#productName {
+    width: 206%;
+}
+
+#file-upload {
+    color: #3c64f5;
+    border-color: #3c64f5;
+    border-width: 1.5px;
+    margin: 10px 0;
+}
+
+.hidden{
+    display: none;
+}
+
+#btnNext{
+    width: 127px;
+    margin-top: 1em;
+    position: relative;
+    left: 1.5%;
+}
+
+#productCountInput {
+    width: 50%;
+}
+
+.custom-control{
+    display: flex;
+    justify-content: space-between;
+    height: 1rem;
+}
+
+.div-form{
+    display: flex;
+    justify-content: space-between;
+}

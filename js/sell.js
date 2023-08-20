@@ -8,6 +8,7 @@ let DOLLAR_SYMBOL = "USD ";
 let PESO_SYMBOL = "UYU ";
 let PERCENTAGE_SYMBOL = '%';
 let MSG = "FUNCIONALIDAD NO IMPLEMENTADA";
+const btnNext = document.getElementById("btnNext");
 
 //Función que se utiliza para actualizar los costos de publicación
 function updateTotalCosts(){
@@ -28,6 +29,10 @@ function updateTotalCosts(){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
+    btnNext.addEventListener("click", () => {
+        document.getElementById("hidden").classList.remove("hidden");
+    })
+
     document.getElementById("productCountInput").addEventListener("change", function(){
         productCount = this.value;
         updateTotalCosts();

@@ -1,38 +1,73 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+     <!--Agregar logo en un futuro-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/loginStyle.css">
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Todo lo que busques está aquí</title>
-  
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: rgb(248, 249, 250);
-    }
-  </style>
-</head>
+    <!-- Cree una pagina de estilos particular para este html e inclui todo los estilos que estaban en el html. También inclui algunas nuevas clases e id para mayor comodidad a la hora de seleccionarlos. -->
 
-<body>
-  <main class="mt-5">
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <title>Pagina de login</title>
+
+  </head>
+
+  <body class="bg-info d-flex justify-content-center align-items-center vh-100">
+
+    <form class="bg-white p-5 rounded-5 text-secondary shadow" id="loginForm">
+
+      <div class="d-flex justify-content-center">
+        <img src="img/img-login/login-icon.svg" alt="login-icon" id="imgUser"/>
       </div>
-    </div>
-  </main>
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
-    </div>
-  </footer>
-  <script src="js/login.js"></script>
-</body>
 
+      <p class="text-center fs-1 fw-bold">Login</p>
+
+      <section id="login-icon" class="input-group mt-4">
+        <div class="input-group-text bg-info">
+          <img src="img/img-login/username-icon.svg" alt="username-icon" class="imgGroup">
+        </div>
+        <input name="nombre" class="form-control bg-light" type="text" placeholder="Ingrese nombre"/>
+      </section>
+
+      <section id="password-icon" class="input-group mt-1">
+        <div class="input-group-text bg-info">
+          <img src="img/img-login/password-icon.svg" alt="password-icon" class="imgGroup"/>
+        </div>
+        <input name="contraseña" class="form-control bg-light" type="password" placeholder="Ingrese contraseña"/>
+      </section>
+
+      <section class="d-flex justify-content-around mt-1">
+        <div class="d-flex align-items-center gap-1">
+          <input type="checkbox" class="form-check-input"/>
+          <div class="pt-1">Recordarme</div>
+        </div>
+        <div class="pt-1">
+          <a href="#" class="text-decoration-none text-info fw-semibold fst-italic">¿Olvido su contraseña?</a>
+        </div>
+      </section>
+
+      <button type="submit" class="btn btn-info text-white w-100 mt-4 fw-semibold shadow-sm">Login</button>
+
+      <section class="d-flex gap-1 justify-content-center mt-1">
+        <span>¿No tiene una cuenta?</span>
+        <a href="#" class="text-decoration-none text-info fw-semibold">Registrarse</a>
+      </section>
+
+      <section class="p-3">
+        <div class="border-bottom text-center">
+          <span class="bg-white px-3">o</span>
+        </div>
+      </section>
+
+      <section id="Google" class="btn d-flex gap-2 justify-content-center border mt-3 shadow-sm">
+        <img src="img/img-login/google-icon.svg" alt="google-icon" id="imgGoogle"/>
+        <div class="fw-semibold text-secondary">Continue con Google</div>
+      </section>
+
+    </form>
+    <script src="js/login.js"></script>
+  </body>
 </html>

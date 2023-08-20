@@ -1,0 +1,23 @@
+form {
+    width: 25rem;
+}
+
+#imgUser {
+    height: 7rem;
+}
+
+.imgGroup {
+    height: 1rem;
+}
+
+.pt-1 {
+    font-size: 0.9rem;
+}
+
+.border-bottom.text-center {
+    height: 0.9rem;
+}
+
+#imgGoogle {
+    height: 1.6rem;
+}

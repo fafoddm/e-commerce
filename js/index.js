@@ -1,3 +1,9 @@
+document.addEventListener("DOMContentLoaded",()=>{
+    if(localStorage.getItem("loggedIn")!== "true"){
+    location.href="login.html"
+}
+});
+
 document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("autos").addEventListener("click", function() {
         localStorage.setItem("catID", 101);
