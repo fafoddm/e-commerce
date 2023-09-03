@@ -5,13 +5,120 @@
   font-family: 'Verdana', serif !important;
 }
 
+
+/* Estilo del nav */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 20px;
+  background-color: #caf0f8;
+  box-shadow: 0px 1px 10px black;
+  height: 70px;
+  margin-bottom: 15px;
+
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+  
+}
+
+/* Estilos del botón del menú */
+.dropbtn {
+  background-color: #caf0f8;
+  color: #006d77;
+  font-family: 'Merriweather', serif;
+  font-weight: 600;
+  font-size: 20px;
+  padding: 10px;
+  padding-right: 20px;
+  border:"none";
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Estilos del contenido desplegable */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #53C0FB;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Estilos de los enlaces dentro del contenido desplegable */
+.dropdown-content a {
+  text-decoration: none;
+  font-family: 'Merriweather', serif;
+  color: #006d77;
+  font-weight: 600;
+  font-size: 20px;
+  transition: 0.3s;
+}
+.dropdown-content a:hover {
+  color:#03045e;
+}
+
+.active {
+  display: block;
+}
+
+.logo {
+  color: #fb8500;
+  font-size: 35px;
+  font-weight: 400;
+  font-family: 'Lilita One', cursive; 
+
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 10px 45px;
+  padding-top: 20px;
+ 
+}
+
+ul li a {
+  text-decoration: none;
+  font-family: 'Merriweather', serif;
+  color: #006d77;
+  font-weight: 600;
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+a:hover {
+color: #03045e;
+}
+
+/* ESTILOS DE LAS TARJETAS */
+.card {
+  cursor: pointer;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2) !important;
+  transition: all 400ms ease;  /* para un efecto sueave que dure 400ms */
+}
+
+.card:hover {
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4) !important;
+  transform: translateY(-3%); /* para que tenga un efecto de movimiento hacia el eje Y un '3%' */
+}
+
+#container {
+  margin-bottom: 30px;
+}
+
+
 .jumbotron .display-4 {
   font-weight: bold;
 }
 
-nav a {
-  text-decoration: none;
-}
+
 
 .bd-placeholder-img {
   font-size: 1.125rem;
@@ -221,4 +328,62 @@ box-shadow: 0 8px 16px rgb(0, 0, 0, 0.1);
   padding-right: 5%;
   margin-bottom: -10px;
   margin-top: -25px;
+}
+
+.search-wrap
+{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+}
+
+.search-container
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  width: fit-content;
+  gap: 4px;
+  border-radius: 6px;
+  border: solid rgba(153, 169, 171, 0.25) 2px;
+
+
+}
+
+#search
+{
+  width: fit-content;
+  border: none;
+
+}
+
+#search-button img
+{
+  width: 24px;
+  pointer-events: none;
+}
+
+#search-button
+{
+  background-color: white;
+  border-left: solid rgba(153, 169, 171, 0.25) 2px;
+
+  border-radius: 0px 4px 4px 0px;
+  padding: 4px 5px 4px 4px;
+
+  cursor: pointer;
+}
+
+#search-button:hover
+{
+  background-color: rgba(153, 169, 171, 0.25);
+}
+
+#search-button:hover img
+{
+  filter: invert();
 }

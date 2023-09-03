@@ -10,34 +10,89 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="icon" href="img/img-iconos/jap-logo.ico">
+   <!-- nuevas fuentes de google fonts para el nav-->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Concert+One&family=Merriweather:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item">
-          </li>
-        </ul>
+  <nav>
+    <h2 class="logo">e-mercado</h2>
+      <ul>
+        <li >
+          <a href="index.html">Inicio</a>
+        </li>
+        <li>
+          <a href="categories.html">Categorías</a>
+        </li>
+        <li>
+          <a href="sell.html">Vender</a>
+        </li>
+      </ul>
+      <div class="dropdown">
+        <button class="dropbtn" id="logoutDropdown" style="border-color: #53C0FB;">Menú</button>
+        <div class="dropdown-content">
+          <a href="#">Perfil</a>
+          <button class="btn btn-danger" id="logout">Cerrar Sesión</button>
+        </div>
       </div>
-    </div>
   </nav>
   <main class="pb-5 container">
-    <div class="container" id="productsContainer">
+    <div class="text-center p-4">
+      <h2>Productos</h2>
+      <p class="lead"></p>
+    </div>
+    <div class="search-wrap">
+      <div class="search-container">
+        <input type="text" placeholder="Buscar..." name="search" id="search">
+        <div id="search-button">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Search_Icon.svg" alt="search-icon">
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col text-end">
+          <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+            <input type="radio" class="btn-check" name="options" id="sortAsc">
+            <label class="btn btn-light" for="sortAscP" id="ordenAsc"><i class="fas fa-sort-amount-down mr-1"></i>$</label> <!-- Orden ascendiente por precio -->
+            <input type="radio" class="btn-check" name="options" id="sortDesc">
+            <label class="btn btn-light" for="sortDescP" id="ordenDesc"><i class="fas fa-sort-amount-up"></i>$</label> <!-- Orden descendiente por precio -->
+            <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
+            <label class="btn btn-light" for="sortRel" id="ordenRelv"><i class="fas fa-sort-amount-down mr-1"></i>Rel.</label> <!-- Orden descendente en función de la relevancia --> 
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
+          <div class="row container p-0 m-0">
+            <div class="col">
+              <p class="font-weight-normal text-end my-2">Precio</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+            </div>
+            <div class="col">
+              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+            </div>
+            <div class="col-3 p-0">
+              <div class="btn-group" role="group">
+                <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>  <!-- Botón de Filtrar -->
+                <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>  <!-- Botón de Limpiar -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="list-group" id="productsContainer">
+        </div>
+      </div>
     </div>
   </main>
 
@@ -59,6 +114,7 @@
   </div>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
+  <script src="js/index.js"></script>
   <script src="js/products.js"></script>
 </body>
 

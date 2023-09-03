@@ -39,3 +39,10 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+const botonDropdown = document.querySelector('.dropdown');
+const contenidoDropdown = document.querySelector('.dropdown-content');
+
+botonDropdown.addEventListener('click', () => {
+  contenidoDropdown.classList.toggle('active');
+})
