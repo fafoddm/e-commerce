@@ -10,31 +10,37 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="icon" href="img/img-iconos/jap-logo.ico">
+  <!-- nuevas fuentes de google fonts para el nav-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Concert+One&family=Merriweather:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item">
-          </li>
-        </ul>
+  <nav>
+    <h2 class="logo">e-mercado</h2>
+      <ul>
+        <li >
+          <a href="index.html">Inicio</a>
+        </li>
+        <li>
+          <a href="categories.html">Categorías</a>
+        </li>
+        <li>
+          <a href="sell.html">Vender</a>
+        </li>
+      </ul>
+      <div class="dropdown">
+        <button class="dropbtn" id="logoutDropdown" style="border-color: #53C0FB;">Menú</button>
+        <div class="dropdown-content">
+          <a href="#">Perfil</a>
+          <button class="btn btn-danger" id="logout">Cerrar Sesión</button>
+        </div>
       </div>
-    </div>
   </nav>
   <main class="pb-5">
     <div class="text-center p-4">
@@ -75,8 +81,8 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="list-group" id="cat-list-container">
+      <div>
+        <div class="row" id="cat-list-container" style="margin-top: 50px; margin-left: 20px;">
         </div>
       </div>
     </div>
@@ -99,7 +105,9 @@
   </div>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
+  <script src="js/index.js"></script>
   <script src="js/categories.js"></script>
+  <script src="js/index.js"></script>
 </body>
 
 </html>
