@@ -21,3 +21,14 @@ form {
 #imgGoogle {
     height: 1.6rem;
 }
+
+/* Modo oscuro */
+.dark-mode {
+    background-color: #181818;
+    color: white;
+  }
+  
+  .dark-mode2 {
+    background-color: #2a2a2a;
+    color: white;
+  }
