@@ -2,6 +2,7 @@ let idusuario = 25801;
 let carritoendpoint = `https://japceibal.github.io/emercado-api/user_cart/${idusuario}.json`;
 
 fetch(carritoendpoint)
+  
   .then((response) => {
     if (!response.ok) {
       throw new Error("Error en la solicitud");
@@ -27,6 +28,7 @@ fetch(carritoendpoint)
           <input type="number" class="cantProd" value="${cantidad}" min="1" data-product-index="${index}"/>
         </td>
         <td id="subtotalProducto${index}">${producto.currency}${subtotalProducto}</td>
+        
       `;
 
       cartContainer.appendChild(tr);
@@ -100,9 +102,29 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
+//BORRAR DATOS DE LOCALSTORAGE DE CARRITO
+
+function borrarElementosCarrito(idElemento){
+  let productos = JSON.parse(localStorage.getItem("allProducts"));
+  let indiceEliminar = productos.findIndex(objeto => objeto.id === idElemento);
+
+  if (indiceEliminar !== -1){
+    productos.splice(indiceEliminar,1);
+    localStorage.setItem("allProducts", JSON.stringify(productos));
+    allProducts = allProducts.filter(objeto => objeto.id !== idElemento);
+    console.log(allProducts);
+    if (localStorage.getItem("prodID") == idElemento){
+      localStorage.setItem("prodID", 0);
+    }
+    location.reload();
+  } 
+  
+}
+
 // Función para actualizar la tabla del carrito
 function updateCartTable() {
   const tbody = document.getElementById("cart-list");
+  console.log("test")
 
   // Limpiar el contenido existente de la tabla
   tbody.innerHTML = "";
@@ -116,6 +138,7 @@ function updateCartTable() {
       <td>${product.currency} ${product.cost}</td>
       <td><input type="number" class="cantProd" value="1" min="1" data-product-index="${index}" /></td>
       <td><span id="subProduct${index}">${product.currency}${product.subtotal}</span></td>
+      <td><span class="btnEliminar" id="${product.id}" onClick=" borrarElementosCarrito(${product.id})">X</span></td>
     `;
     tbody.appendChild(row);
   });
@@ -140,14 +163,14 @@ function updateCartTable() {
 
 //CALCULAR TOTAL
 function calcularTotal() {
-  let total = 0;
+  let subtotal = 0;
   let costoEnvio = 100;
 
   allProducts.forEach((product) => {
-    if (product.currency == "USD") {
-      total += Math.round(product.subtotal * 39);
+    if (product.currency == "UYU") {
+      subtotal += Math.round(product.subtotal / 39);
     } else {
-      total += product.subtotal;
+      subtotal += product.subtotal;
     }
   });
 
@@ -155,18 +178,29 @@ function calcularTotal() {
 
   for (let i = 0; i < inputsRadios.length; i++) {
     if (inputsRadios[i].checked && i == 0) {
-      costoEnvio = 15;
+      porcentajeEnvio = 15;
     } else if (inputsRadios[i].checked && i == 1) {
-      costoEnvio = 7;
+      porcentajeEnvio = 7;
     } else if (inputsRadios[i].checked && i == 2) {
-      costoEnvio = 5;
+      porcentajeEnvio = 5;
     }
   }
 
-  let totalp = document.getElementById("total");
-  totalp.innerHTML = `<span id="totalp">TOTAL: </span>UYU ${
-    total + parseInt(total * (costoEnvio / 100))
+  let total = document.getElementById("total");
+  let envio = parseInt(subtotal * (porcentajeEnvio / 100));
+  total.innerHTML = `TOTAL: USD ${
+    subtotal + envio
   }`;
+
+  let subtotalp = document.getElementById("subtotal");
+  subtotalp.innerHTML = `<span id="totalp">Subtotal: USD ${
+    subtotal
+  }</span>`
+
+  let enviop = document.getElementById("envio");
+  enviop.innerHTML = `<span id="totalp">Envío: USD ${
+    envio
+  }</span>`
 }
 
 calcularTotal();
@@ -182,3 +216,198 @@ Array.from(document.getElementsByClassName("cantProd")).forEach((element) => {
     calcularTotal();
   });
 });
+
+/* VALIDACIONES */
+
+let nroTarjeta = document.getElementById("nTarjeta");
+let segCod = document.getElementById("codigoSeg");
+let vtoTar = document.getElementById("fechaVto");
+let titularName = document.getElementById("nombre");
+let nDeCuenta = document.getElementById("nDeCuenta");
+let nDeCI = document.getElementById("nDeCI");
+
+//Validacion de tarjeta
+function validacionMetodoDePagoTar(){
+ 
+  if(nroTarjeta.value.length==16 && segCod.value.length==3 && vtoTar.value!==""){
+   alert("Tarjeta ingresada con exito")
+   
+  }else{
+    alert("Ingrese todos los campos correctamente: recuerde ingresar los 16 digitos de la tarjeta, el codigo de seguridad que contiene 3 numeros y la fecha de vencimiento")
+   
+  }
+}
+
+function validarEnvio() {
+  const envioRadios = document.getElementsByName("envio");
+  for (const radio of envioRadios) {
+    if (radio.checked) {
+      return true; // Se seleccionó al menos una opción de envío
+    }
+  }
+  return false; // Ninguna opción de envío seleccionada
+}
+
+
+
+function validarPago() {
+  const pagoRadios = document.getElementsByName("pago");
+  for (const radio of pagoRadios) {
+    if (radio.checked) {
+      if (radio.id === "credito-debito" && nroTarjeta.value !== "" && segCod.value !== "" && vtoTar.value !== "" && titularName.value !== "") {
+        // Si es tarjeta de crédito o débito //
+        return true;
+      } else if (radio.id === "transf" && nDeTransf.value !== "" && nDeTransf.value.length >= 10) {
+        // Si es transferencia bancaria //
+        return true;
+      } else if (radio.id === "red-cobra" && nDeCI.value !== "" && nDeCI.value.length === 8) {
+        // Si es redes de cobranza //
+        return true;
+      }
+      
+      // Alertas personalizadas para cada caso
+      if (radio.id === "credito-debito" && (nroTarjeta.value === "" || segCod.value === "" || vtoTar.value === "" || titularName.value === "")) {
+        alert("Por favor, complete todos los campos de la tarjeta.");
+      } else if (radio.id === "transf" && nDeCuenta.value === "" ||  nDeCuenta.value.length <= 10) {
+        alert("Por favor, ingrese el número de cuenta correcto.");
+      } else if (radio.id === "red-cobra" && (nDeCI.value === "" || nDeCI.value.length !== 8)) {
+        alert("Por favor, ingrese un número de CI válido de 8 digitos.");
+      }
+    }
+  }
+  return false;
+}
+
+
+function validacionCuenta(){
+  let nroCuenta = document.getElementById("nDeCuenta");
+  let nroCI = document.getElementById("nDeCI");
+
+  if(nroCuenta.value!=="" || nroCI.value!==""){
+    alert("registro con exito");
+    nroCI.value="";
+    nroCuenta.value="";
+    vtoTar.value = "";
+  }else{
+    alert("Ingrese los datos correctamente")
+  }
+}
+ 
+let botonGuardarTar = document.getElementById("validacionTar");
+botonGuardarTar.addEventListener("click",()=>{
+  validacionMetodoDePagoTar();
+});
+
+
+/* VALACIONES TRASFERENCIA */
+function validacionTrasferencia(){
+  const numeroDeCuenta = document.getElementById("nDeTransf").value;
+
+  if(nDeTransf >= 10 && nDeTransf !== " "){
+    alert("Datos guardados");
+  }if (nDeTransf < 10){
+    alert("Debe ingresar un numero de cuenta valido")
+  }
+};
+
+const validaTrasferencia = document.getElementById("validacionTrasferencia");
+ validaTrasferencia.addEventListener("click", ()=> {
+  validacionTrasferencia();
+  console.log("click");
+ });
+
+
+ function validacionRedes() {
+  const numeroCedula = document.getElementById("nDeCI").value;
+ 
+  if (numeroCedula.length === 8 && numeroCedula.trim() !== "") {
+    alert("Datos guardados");
+  } else if (numeroCedula.length < 8 ) {
+    alert("Debe ingresar un número de cédula válido");
+  }
+};
+
+const validacionCI = document.getElementById("validacionCI");
+validacionCI.addEventListener("click", ()=> {
+  validacionRedes();
+  console.log("click");
+ });
+
+
+/* Avisar de errores y compra exitosa */
+
+const button = document.getElementById("btn-realizar-compra");
+button.addEventListener("click", function() {
+  // Validar dirección
+  const calle = document.getElementById("calle").value;
+  const numero = document.getElementById("numero").value;
+  const esquina = document.getElementById("esquina").value;
+
+  if (!calle.trim() || !numero.trim() || !esquina.trim()) {
+    alert("Por favor, complete todos los campos de dirección.");
+    return;
+  }
+
+  // Contar cuántas opciones de método de pago están seleccionadas
+  const pagoRadios = document.getElementsByName("pago");
+  let selectedCount = 0;
+  let selectedPaymentMethod = null;
+  for (const radio of pagoRadios) {
+    if (radio.checked) {
+      selectedCount++;
+      selectedPaymentMethod = radio;
+    }
+  }
+
+  if (selectedCount !== 1) {
+    alert("Por favor, elija una única opción de método de pago.");
+    return;
+  }
+
+  // Validar los campos de la opción de método de pago seleccionada
+  if (selectedPaymentMethod.id === "credito-debito") {
+    if (nroTarjeta.value.length !== 16 || segCod.value.length !== 3 || vtoTar.value === "" || titularName.value === "") {
+      alert("Por favor, complete los campos del método de pago tarjeta.");
+      return;
+    }
+  } else if (selectedPaymentMethod.id === "transf") {
+    if (nDeCuenta.value === "" || nDeCuenta.value.length < 10) {
+      alert("Por favor, ingrese un número de cuenta válido para transferencia bancaria.");
+      return;
+    }
+  } else if (selectedPaymentMethod.id === "red-cobra") {
+    if (nDeCI.value === "" || nDeCI.value.length !== 8) {
+      alert("Por favor, ingrese un número de CI válido de 8 dígitos para redes de cobranza.");
+      return;
+    }
+  }
+
+  // Verificar cantidad de productos
+  const cantProdInputs = document.getElementsByClassName("cantProd");
+  for (let i = 0; i < cantProdInputs.length; i++) {
+    if (parseInt(cantProdInputs[i].value, 10) === 0) {
+      alert("La cantidad de productos no puede ser 0.");
+      return;
+    }
+  }
+
+  // Si todas las validaciones pasan, mostramos el mensaje de compra exitosa
+  alert("Su compra ha sido exitosa");
+
+  // Limpiar todos los campos
+  nroTarjeta.value = "";
+  segCod.value = "";
+  vtoTar.value = "";
+  titularName.value = "";
+  nDeCuenta.value = "";
+  nDeCI.value = "";
+  document.getElementById("calle").value = "";
+  document.getElementById("numero").value = "";
+  document.getElementById("esquina").value = "";
+  for (let i = 0; i < cantProdInputs.length; i++) {
+    cantProdInputs[i].value = "";
+  }
+});
+
+
+

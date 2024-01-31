@@ -1,18 +1,44 @@
+h2 {
+    font-weight: bold;
+}
+
+.lead {
+    font-size: small;
+}
+
+h4 {
+    font-size: large;
+    font-weight: bold;
+}
+
+.contenido1 {
+    background-color: rgba(236, 237, 242, 0.578);
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.input {
+    border: 0;
+    border-radius: 7px;
+    padding-left: 15px;
+    margin-top: 6px;
+}
+
 .dz-clickable {
     width: 152%;
     height: 300 vh;
 }
 
-#productName {
-    width: 206%;
-}
 
 #file-upload {
     color: #3c64f5;
     border-color: #3c64f5;
     border-width: 1.5px;
-    margin: 10px 0;
-    background-color: rgb(180, 180, 180);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.622);
+    height: 250px;
 }
 
 .hidden{
@@ -26,8 +52,12 @@
     left: 1.5%;
 }
 
-#productCountInput {
-    width: 50%;
+#btnSell{
+    width: 100%;
+}
+
+.dz-message {
+    padding-top: 50px;
 }
 
 .custom-control{
@@ -36,7 +66,38 @@
     height: 1rem;
 }
 
+.custom-control-label {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+    background-color: white;
+    border-radius: 20px;
+    text-align: center;
+    padding: 5px 23px;
+    border-radius: 20px;
+    transition: border-color 0.3s;
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    opacity: 0;
+    position: absolute;
+}
+
+input[type="radio"]:checked + label {
+    border: 2px solid #ba9e00;
+    font-weight: bold;
+}
+
 .div-form{
     display: flex;
     justify-content: space-between;
+}
+
+.verCondiciones {
+    margin-top: -8px;
+}
+
+button {
+    border-radius: 10px !important;
 }

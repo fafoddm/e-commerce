@@ -38,19 +38,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <link rel="icon" href="img/img-iconos/jap-logo.ico" />
-    <!-- nuevas fuentes de google fonts para el nav-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Concert+One&family=Merriweather:wght@300&display=swap"
-      rel="stylesheet"
-    />
+    
   </head>
 
   <body class="light">
@@ -257,7 +245,6 @@
         <button
           class="dropbtn"
           id="logoutDropdown"
-          style="border-color: #53c0fb"
         >
           <span id="usernameSpan"></span>
         </button>
@@ -275,9 +262,9 @@
     </nav>
     <main class="pb-5 container">
       <!-- Titulo -->
-      <section class="text-center p-4">
+      <section class="text-center p-4" id="tituloProducto">
         <h2>Productos</h2>
-        <p class="lead"></p>
+        <p class="lead subtitulo"></p>
       </section>
 
       <!-- Buscador -->
@@ -390,12 +377,35 @@
       </section>
     </main>
 
-    <footer class="text-muted">
-      <div class="container" id="infEnd">
-        <p class="float-end">
-          <a href="#">Volver arriba</a>
-        </p>
-        <p>
+    <div class="volverArriba">
+      <a href="#">Volver arriba</a>
+    </div>
+    <footer>
+      <div class="row w-100" id="infEnd">
+        <div class="col-4 mt-4 text-center">
+          <img src="img/img-iconos/jap-logo.png" alt="" width="280px">
+        </div>
+        <div class="col-4">
+          <h4>EMPRESA</h4>
+          <ul>
+            <li>Nosotros</li>
+            <li>Términos y condiciones</li>
+            <li>Políticas de Envíos y devoluciones</li>
+            <li>Política de privacidad</li>
+          </ul>
+        </div>
+        <div class="col-4">
+          <h4>CONTACTO</h4>
+          <ul>
+            <li>Celular: +598 91 234 567</li>
+            <li>Email: contacto@jap.uy</li>
+          </ul>
+          <h4>REDES SOCIALES</h4>
+          <ul>
+            <li>Instagram Facebook Twitter</li>
+          </ul>
+        </div>
+        <p class="text-center text-muted mt-2">
           Este sitio forma parte de
           <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
             >Jovenes a Programar</a

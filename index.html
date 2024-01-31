@@ -21,6 +21,7 @@
       href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -33,10 +34,8 @@
         top: 0;
         z-index: 3;
       }
-        /* estilo del nav solo para la pagina index */
-    
+      /* estilo del nav solo para la pagina index */
     </style>
-    
   </head>
 
   <body class="light">
@@ -243,9 +242,9 @@
         <button
           class="dropbtn"
           id="logoutDropdown"
-          style="border-color: #53c0fb"
         >
-          <span id="usernameSpan"></span>
+        <span id="usernameSpan"></span>
+        
         </button>
         <ul class="dropdown-content">
           <li class="menuCel"><a href="index.html">Inicio</a></li>
@@ -261,61 +260,312 @@
     </nav>
 
     <main>
-
       <!-- CARRUSEL  -->
 
-
-      
       <div id="carouselExampleCaptions" class="carousel slide">
         <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
         </div>
         <div id="carouselChance" class="carousel-inner">
           <div class="carousel-item active">
-            <img src="img/auto.jpg" class="d-block w-100 vh-100" alt="...">
+            <img src="img/auto.jpg" class="d-block w-100 vh-100" alt="..." />
             <div class="carousel-caption d-none d-md-block">
-              <h5 class="img-carousel" style="font-weight: 700; font-size: 40px;">AUTOS</h5>
-              <p class="img-carousel" style="font-size: 25px; font-weight: 700;">Encuentra los mejores precios en autos 0km de alta y mediana gama.</p>
+              <h5
+                class="img-carousel"
+                style="font-weight: 700; font-size: 40px"
+              >
+                AUTOS
+              </h5>
+              <p class="img-carousel" style="font-size: 25px; font-weight: 700">
+                Encuentra los mejores precios en autos 0km de alta y mediana
+                gama.
+              </p>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="img/toy-story.jpg" class="d-block w-100 vh-100" alt="...">
+            <img
+              src="img/toy-story.jpg"
+              class="d-block w-100 vh-100"
+              alt="..."
+            />
             <div class="carousel-caption d-none d-md-block">
-              <h5  class="img-carousel" style="font-weight: 700; font-size: 40px;">JUGUETES</h5>
-              <p class="img-carousel" style="font-size: 25px; font-weight: 700;">Encuentra aquí los mejores precios para niños/as de cualquier edad.</p>
+              <h5
+                class="img-carousel"
+                style="font-weight: 700; font-size: 40px"
+              >
+                JUGUETES
+              </h5>
+              <p class="img-carousel" style="font-size: 25px; font-weight: 700">
+                Encuentra aquí los mejores precios para niños/as de cualquier
+                edad.
+              </p>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="img/mueble.jpg" class="d-block w-100 vh-100" alt="...">
+            <img src="img/mueble.jpg" class="d-block w-100 vh-100" alt="..." />
             <div class="carousel-caption d-none d-md-block">
-              <h5 style="font-weight: 700; font-size: 40px;">MUEBLES</h5>
-              <p  style="font-size: 25px; font-weight: 700;">Encuentra tus muebles ideales, antiguos, nuevos y para ser armados por ti mismo.</p>
+              <h5 style="font-weight: 700; font-size: 40px">MUEBLES</h5>
+              <p style="font-size: 25px; font-weight: 700">
+                Encuentra tus muebles ideales, antiguos, nuevos y para ser
+                armados por ti mismo.
+              </p>
             </div>
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" style="background-color: black;"></span>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev"
+        >
+          <span
+            class="carousel-control-prev-icon"
+            style="background-color: black"
+          ></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-          <span class="carousel-control-next-icon" style="background-color: black;"></span>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next"
+        >
+          <span
+            class="carousel-control-next-icon"
+            style="background-color: black"
+          ></span>
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-      
- 
+
+      <div class="recommended-wrap">
+        <div class="recommendation_card">
+          <p>
+            Tienen de todo y comprar online es un alivio. Compré una guitarra y
+            llegó en dos días, además más barata que en la tienda local.
+          </p>
+          <h3>Jose Ignacio</h3>
+        </div>
+
+        <div class="recommendation_card">
+          <p>
+            Fácil de usar, ahorro tiempo y dinero. A veces hay problemas con la
+            entrega, pero en general estoy contento.
+          </p>
+          <h3>Enrique Herrera</h3>
+        </div>
+
+        <div class="recommendation_card">
+          <p>
+            E-Mercado es mi lugar de compras en línea. Pago seguro, a veces los
+            productos no eran lo que esperaba, pero el servicio al cliente
+            siempre me ayuda. Buen sitio para comprar.
+          </p>
+          <h3>Soledad Lopez</h3>
+        </div>
+      </div>
+
+      <div class="call_to_action-wrap">
+        <div class="video_wrap">
+          <div style="padding: 56.25% 0 0 0; position: relative">
+            <iframe
+              src="https://player.vimeo.com/video/878021226?controls=0&badge=0&amp;autoplay=1&loop=1&amp;quality_selector=1&amp;player_id=0&amp;app_id=58479"
+              frameborder="0"
+              allow="autoplay; fullscreen; picture-in-picture"
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 150%;
+                height: 150%;
+              "
+              title="shop_broll"
+            ></iframe>
+          </div>
+          <script src="https://player.vimeo.com/api/player.js"></script>
+        </div>
+        <div class="cta_info-wrap bg-gradient fondoObscuro">
+          <h3>Todo lo que necesites</h3>
+          <p>
+            Emercado se enfoca en dar todo lo que nuestros clientes necesiten,
+            todo desde la comodidad de tu casa.
+          </p>
+          <button id="btnVerCatalogo">VER CATÁLOGO</button>
+        </div>
+      </div>
+      <div class="featured_products-wrap">
+        <h3>Productos Mas Populares</h3>
+        <div class="container row">
+          <div
+            class="col-lg-3 col-md-4 col-sm-6 mb-4"
+            onclick="setProdID(60804)"
+            style="color: #161515"
+          >
+            <div class="card mb-4 custom-shadow h-100 bg-light cursor-active">
+              <img
+                src="./img/prod60804_1.jpg"
+                class="card-img-top"
+                alt="Mesa de centro"
+              />
+              <div class="card-body">
+                <p class="card-text"></p>
+                <p class="nameCar">Mesa de centro</p>
+                <p class="desCar">
+                  Añade más funciones a tu sala de estar, ya que te permite
+                  cambiar fácilmente de actividad.
+                </p>
+                <p></p>
+              </div>
+              <div
+                class="priceAmount d-flex justify-content-between align-items-center rounded-2"
+              >
+                <p class="priceCar">UYU 10000</p>
+                <p class="amountCar ms-auto me-0">37</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="col-lg-3 col-md-4 col-sm-6 mb-4"
+            onclick="setProdID(50741)"
+            style="color: #161515"
+          >
+            <div class="card mb-4 custom-shadow h-100 bg-light cursor-active">
+              <img
+                src="./img/prod50741_1.jpg"
+                class="card-img-top"
+                alt="Oso de peluche"
+              />
+              <div class="card-body">
+                <p class="card-text"></p>
+                <p class="nameCar">Oso de peluche</p>
+                <p class="desCar">
+                  Oso de peluche gigante, con el bebé. Resistente y lavable. Tus
+                  hijos los amarán
+                </p>
+                <p></p>
+              </div>
+              <div
+                class="priceAmount d-flex justify-content-between align-items-center rounded-2"
+              >
+                <p class="priceCar">UYU 2400</p>
+                <p class="amountCar ms-auto me-0">97</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="col-lg-3 col-md-4 col-sm-6 mb-4"
+            onclick="setProdID(60801)"
+            style="color: #161515"
+          >
+            <div class="card mb-4 custom-shadow h-100 bg-light cursor-active">
+              <img
+                src="./img/prod60801_1.jpg"
+                class="card-img-top"
+                alt="Juego de comedor"
+              />
+              <div class="card-body">
+                <p class="card-text"></p>
+                <p class="nameCar">Juego de comedor</p>
+                <p class="desCar">
+                  Un conjunto sencillo y sólido, ideal para zonas de comedor
+                  pequeñas, hecho en madera maciza de pino
+                </p>
+                <p></p>
+              </div>
+              <div
+                class="priceAmount d-flex justify-content-between align-items-center rounded-2"
+              >
+                <p class="priceCar">UYU 4000</p>
+                <p class="amountCar ms-auto me-0">88</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="col-lg-3 col-md-4 col-sm-6 mb-4"
+            onclick="setProdID(50923)"
+            style="color: #161515"
+          >
+            <div class="card mb-4 custom-shadow h-100 bg-light cursor-active">
+              <img
+                src="./img/prod50923_1.jpg"
+                class="card-img-top"
+                alt="Suzuki Celerio"
+              />
+              <div class="card-body">
+                <p class="card-text"></p>
+                <p class="nameCar">Suzuki Celerio</p>
+                <p class="desCar">
+                  Un auto que se ha ganado la buena fama por su economía con el
+                  combustible.
+                </p>
+                <p></p>
+              </div>
+              <div
+                class="priceAmount d-flex justify-content-between align-items-center rounded-2"
+              >
+                <p class="priceCar">USD 12500</p>
+                <p class="amountCar ms-auto me-0">25</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="volverArriba">
+        <button><a href="#">VOLVER ARRIBA<i class="bi bi-arrow-up"></i></a></button>
+      </div>
     </main>
-    <footer class="text-muted">
-      <div class="container" id="infEnd">
-        <p class="float-end">
-          <a href="#">Volver arriba</a>
-        </p>
-        <p>
+    
+    <footer>
+      <div class="row w-100" id="infEnd" >
+        <div class="col-4 mt-4 text-center">
+          <img src="img/img-iconos/jap-logo.png" alt="" width="280px">
+        </div>
+        <div class="col-lg-4 col-md-12 col-sm-2">
+          <h4>EMPRESA</h4>
+          <ul>
+            <li>Nosotros</li>
+            <li>Términos y condiciones</li>
+            <li>Políticas de Envíos y devoluciones</li>
+            <li>Política de privacidad</li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-12 col-sm-2">
+          <h4>CONTACTO</h4>
+          <ul>
+            <li>Celular: +598 91 234 567</li>
+            <li>Email: contacto@jap.uy</li>
+          </ul>
+          <h4>REDES SOCIALES</h4>
+          <ul>
+            <li>Instagram Facebook Twitter</li>
+          </ul>
+        </div>
+        <p class="text-center text-muted mt-2" id="japFooter">
           Este sitio forma parte de
           <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
-            >Jovenes a Programar</a
+            > Jovenes a Programar</a
           >
         </p>
       </div>
@@ -324,5 +574,6 @@
     <script src="js/index.js"></script>
     <script src="js/init.js"></script>
     <script src="js/products.js"></script>
+    <script src="js/categories.js"></script>
   </body>
 </html>

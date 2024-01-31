@@ -140,7 +140,8 @@ function showInfoProducts(productData, comentData) {
           </div>
         </label><br>
         <textarea class="form-control" id="comment-nuevo" placeholder="Escriba aquí su comentario..."></textarea><br>
-        <button class="btn btn-primary" id="botonEnv" style=>Enviar</button>
+        <button class="btn btn-primary" id="botonEnv">Enviar</button>
+      
 
     `;
   container.innerHTML = productInfoHTML;

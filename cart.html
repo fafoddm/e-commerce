@@ -29,6 +29,31 @@
       href="https://fonts.googleapis.com/css2?family=Concert+One&family=Merriweather:wght@300&display=swap"
       rel="stylesheet"
     />
+    
+   <style>
+      input:focus{
+        outline: none;
+      }
+
+      input:valid {
+        border: 1px solid green;
+      }
+
+      input:invalid {
+        border: 1px solid red;
+      }
+
+      input:invalid + .error {
+        display: block;
+      }
+
+      .error {
+        display: none;
+        color: red;
+        font-weight: bold;
+        font-size: 12px;
+      }
+    </style> 
   </head>
 
   <body class="light">
@@ -235,7 +260,6 @@
         <button
           class="dropbtn"
           id="logoutDropdown"
-          style="border-color: #53c0fb"
         >
           <span id="usernameSpan"></span>
         </button>
@@ -251,8 +275,8 @@
         </ul>
       </div>
     </nav>
-    <main>
-      <div class="container">
+    <main id="mainCart">
+      <div class="container" >
         <div class="row">
           <h3 id="titulo-carrito">Realizar compra</h3>
           <div class="tabla col-12">
@@ -264,6 +288,7 @@
                   <th>PRECIO</th>
                   <th>CANTIDAD</th>
                   <th id="titulo-lista-subtotal">SUBTOTAL</th>
+                  <th class="encabezadoX"></th>
                 </tr>
               </thead>
               <tbody id="cart-list"></tbody>
@@ -271,43 +296,174 @@
           </div>
         </div>
         <div id="cart-shiping" class="row">
-          <div class="col-4">
-            <h4>Dirección de envio</h4>
+          <div class="col-4 seccion-shipping">
+            <h4>Dirección de envío</h4>
             <div class="datosDirec">
-              <label for="">Calle</label>
-              <input type="text" />
+              <input type="text" placeholder="Calle" id="calle" required/>
+              <span class="error">Debe ingresar una calle</span>
             </div>
             <div class="datosDirec">
-              <label for="">Numero</label>
-              <input type="text" />
+              <input type="text" placeholder="Número" id="numero" required/>
+              <span class="error">Debe ingresar el numero de la casa</span>
             </div>
             <div class="datosDirec">
-              <label for="">Esquina</label>
-              <input type="text" />
+              <input type="text" placeholder="Esquina" id="esquina" required />
+              <span class="error">Repetir contraseña</span>
             </div>
           </div>
-          <div class="col-4 tipo-envio">
-            <h4>Tipo de envio</h4>
-            <div class="container row">
-              <span><input type="radio" name="envio"> Premium 2 a 5 dias (15%)</span>
-              <span><input type="radio" name="envio"> Express 5 a 8 dias (7%)</span>
-              <span><input type="radio" name="envio" checked> Standard 12 a 15 dias (5%)</span>
+          <div class="col-4 tipo-envio seccion-shipping">
+            <h4>Tipo de envío</h4>
+            <div class="radio-container text-dark">
+              <input type="radio" id="premium" name="envio">
+              <label for="premium">Premium 2 a 5 días (15%)</label>
+            </div>
+            <div class="radio-container text-dark">
+              <input type="radio" id="express" name="envio">
+              <label for="express">Express 5 a 8 días (7%)</label>
+            </div>
+            <div class="radio-container text-dark">
+              <input type="radio" id="standard" name="envio" checked>
+              <label for="standard">Standard 12 a 15 días (5%)</label>
             </div>
           </div>
-          <div class="col-4" id="total-realizar-compra">
-            <div id="precio-compra">
-              <h5 id="total" style="color: #161515;"></h5>
+          <div class="col-4 tipo-envio seccion-shipping">
+            <h4>Método de pago</h4>
+            <div class="radio-container text-dark">
+              <input type="radio" name="pago" id="credito-debito" data-bs-toggle="modal" data-bs-target="#creditoDebito">
+              <label for="credito-debito">Crédito o Débito</label>
             </div>
-            <button id="btn-realizar-compra" class="btn btn-success">Realizar compra</button>
+            <div class="radio-container text-dark">
+              <input type="radio" name="pago" id="transf" data-bs-toggle="modal" data-bs-target="#Transf" >
+              <label for="transf">Transferencia bancaria</label>
+            </div>
+            <div class="radio-container text-dark">
+              <input type="radio" name="pago" id="red-cobra" data-bs-toggle="modal" data-bs-target="#redCobra" ></span>
+              <label for="red-cobra">Redes de cobranza</label>
+            </div>
+            <div class="modal fade" id="creditoDebito" tabindex="-1" aria-labelledby="datosTarjeta" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="datosTarjeta">Datos de la tarjeta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body datosStyle">
+                    <form>
+                      <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Ingrese nombre del titular:</label>
+                        <input type="text" class="form-control" id="nombre" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Ingrese numero de la tarjeta:</label>
+                        <input type="number" class="form-control" id="nTarjeta" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="message-text" class="col-form-label">CVV:</label>
+                        <input type="number" class="form-control" id="codigoSeg" required> 
+                      </div>
+                      <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Fecha de vencimiento:</label>
+                        <input type="date" id="fechaVto" required>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="validacionTar">Guardar Datos</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal fade" id="Transf" tabindex="-1" aria-labelledby="datosCuenta" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="datosCuenta">Datos de la transferencia</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body datosStyle">
+                  <form>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Ingrese número de cuenta:</label>
+                        <input type="number" class="form-control" id="nDeTransf" minlength="10" required>
+                        <span class="error">Debe ingresar un minimo de 10 caracteres</span>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btn btn-primary" id="validacionTrasferencia">Guardar Datos</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+        <div class="modal fade" id="redCobra" tabindex="-1" aria-labelledby="datosRedCobra" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content datosPago">
+              <div class="modal-header">
+                <h5 class="modal-title" id="datosRedCobra">Datos de Pago</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body datosStyle">
+                <form>
+                  <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Ingrese número de CI:</label>
+                    <input type="number" class="form-control" id="nDeCI" required>
+                  </div>
+                </form>
+                <p>Presentarse en cualquier red de cobranza con su número de documento</p>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btn btn-primary" id="validacionCI">Guardar Datos</button>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12" id="total-realizar-compra">
+            <div id="precio-compra">
+              <h5 id="subtotal" style="color: #161515;"></h5>
+              <h5 id="envio" style="color: #161515;"></h5>
+              <h5 id="total" style="color: #161515;"></h5>
+            </div>
+            <button id="btn-realizar-compra" class="btn btn-success" name="button">Realizar compra</button>
+          </div>
+        </div>
+    </div>
     </main>
-    <footer class="text-muted">
-      <div class="container" id="infEnd">
-        <p class="float-end">
-          <a href="#">Volver arriba</a>
-        </p>
-        <p>
+    <div class="volverArriba">
+      <a href="#">Volver arriba</a>
+    </div>
+    <footer>
+      <div class="row w-100" id="infEnd">
+        <div class="col-4 mt-4 text-center">
+          <img src="img/img-iconos/jap-logo.png" alt="" width="280px">
+        </div>
+        <div class="col-4">
+          <h4>EMPRESA</h4>
+          <ul>
+            <li>Nosotros</li>
+            <li>Términos y condiciones</li>
+            <li>Políticas de Envíos y devoluciones</li>
+            <li>Política de privacidad</li>
+          </ul>
+        </div>
+        <div class="col-4">
+          <h4>CONTACTO</h4>
+          <ul>
+            <li>Celular: +598 91 234 567</li>
+            <li>Email: contacto@jap.uy</li>
+          </ul>
+          <h4>REDES SOCIALES</h4>
+          <ul>
+            <li>Instagram Facebook Twitter</li>
+          </ul>
+        </div>
+        <p class="text-center text-muted mt-2">
           Este sitio forma parte de
           <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
             >Jovenes a Programar</a

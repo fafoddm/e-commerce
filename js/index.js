@@ -4,8 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   const logout = document.getElementById("logout");
   logout.addEventListener("click", () => {
-    localStorage.removeItem("username");
-    localStorage.removeItem("password");
+    localStorage.clear();
     localStorage.setItem("loggedIn", "false");
     location.href = "login.html";
   });
@@ -31,8 +30,16 @@ const usernameSpan = document.getElementById("usernameSpan");
 
 let username = localStorage.getItem("username");
 let imagenuser = document.createElement("img");
-imagenuser.src = "img/img-iconos/logoPerfil.png";
-imagenuser.style.width = "30px";
-botonuser.appendChild(imagenuser);
 
+if (localStorage.getItem("profileImage")) {
+  imagenuser.src = localStorage.getItem("profileImage");
+} else {
+  imagenuser.src = "img/img_perfil.png";
+}
+localStorage.getItem("profileImage");
+imagenuser.style.width = "25px";
+imagenuser.style.margin = "5px";
+imagenuser.style.borderRadius = "50%";
+
+botonuser.appendChild(imagenuser);
 usernameSpan.textContent = username;
